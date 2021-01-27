@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ylf.spring.dao.mapper.BookMapper">
+    <cache eviction="LRU" flushInterval="200000" readOnly="true" size="1024"/>
+
+    <select id="selectAllBooks"  resultType="com.ylf.spring.pojo.Books" useCache="true" flushCache="false">
+        select * from tb_book
+    </select>
+
+
+
+    <select id="selectBookByNameVague" resultType="com.ylf.spring.pojo.Books" parameterType="String" flushCache="true">
+        select * from tb_book where bookName like "%"#{bookName}"%"
+    </select>
+
+    <insert id="insertBook" parameterType="com.ylf.spring.pojo.Books" flushCache="true">
+        insert into tb_book values (null, #{bookName}, #{bookCount}, #{bookDetail})
+    </insert>
+
+
+    <update id="updateBookById" parameterType="com.ylf.spring.pojo.Books" flushCache="true">
+        update tb_book
+        set bookName=#{bookName}, bookCount=#{bookCount}, bookDetail=#{bookDetail}
+        where bookId=#{bookId}
+    </update>
+</mapper>

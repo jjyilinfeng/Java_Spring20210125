@@ -7,6 +7,7 @@
     <settings>
         <!-- 打印查询语句 -->
         <setting name="logImpl" value="STDOUT_LOGGING" />
+        <setting name="cacheEnabled" value="true"/>
     </settings>
 
     <!-- 和Spring整合后environment配置都会被干掉 -->
@@ -16,8 +17,8 @@
             <transactionManager type="JDBC" />
             <!-- 数据库连接池，目前由mybatis来管理 -->
             <dataSource type="POOLED"><!--有关于mysql数据库的各种信息-->
-                <property name="driver" value="com.mysql.jdbc.Driver" />
-                <property name="url" value="jdbc:mysql://localhost:3306/test" />
+                <property name="driver" value="com.mysql.cj.jdbc.Driver" />
+                <property name="url" value="jdbc:mysql://localhost:3306/test?userUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Shanghai" />
                 <property name="username" value="root" />
                 <property name="password" value="123456" />
             </dataSource>
@@ -26,6 +27,7 @@
 
     <mappers>
         <!--将操作配置文件User.xml系添加进mapper-->
-        <mapper resource="mybatis/user.xml" />
+
+        <mapper class="com.ylf.spring.dao.mapper.BookMapper"/>
     </mappers>
 </configuration>

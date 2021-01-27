@@ -8,8 +8,8 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
     <!-- 配置自动扫描的包 -->
-    <context:component-scan base-package="com.ylf.spring.controller"/>
-    <context:component-scan base-package="META-INF"/>
+    <context:component-scan base-package="com.ylf.spring"/>
+    <context:component-scan base-package="WEB-INF"/>
     <!-- 加 开启controller注解  防止后端404 -->
     <mvc:annotation-driven/>
     <!-- 配置视图解析器 如何把handler 方法返回值解析为实际的物理视图 -->
